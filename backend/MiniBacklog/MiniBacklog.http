@@ -1,0 +1,38 @@
+@rootUrl = http://localhost:5095
+
+GET {{rootUrl}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{rootUrl}}/api/games
+Accept: application/json
+
+###
+GET {{rootUrl}}/api/games/1
+Accept: application/json
+
+###
+POST {{rootUrl}}/api/games
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "LoL",
+    "creator": "Riot Game",
+    "year": 2010
+}
+
+###
+PUT {{rootUrl}}/api/games/2
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "LoL",
+    "creator": "Riot GameSSS",
+    "year": 2010
+}
+
+###
+DELETE {{rootUrl}}/api/games/1
+Accept: application/json

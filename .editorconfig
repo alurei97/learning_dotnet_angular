@@ -1,0 +1,30 @@
+# .editorconfig
+root = true
+
+[*.cs]
+# Indentation
+indent_style = space
+indent_size = 4
+
+# Trailing commas (C# 12+)
+dotnet_style_trailing_comma_in_declaration = true:warning
+dotnet_style_trailing_comma_in_argument = true:warning
+dotnet_style_trailing_comma_in_tuple = true:warning
+
+# Blank lines
+dotnet_style_require_blank_line_between_type_declarations = true:suggestion
+dotnet_style_require_blank_line_after_using_directives = true:suggestion
+
+# Remove extra blank lines
+dotnet_style_blank_lines_between_using_groups = single_line:suggestion
+
+# Braces
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+
+# Spacing
+csharp_space_after_cast = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses = false
