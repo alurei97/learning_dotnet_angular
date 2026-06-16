@@ -82,6 +82,7 @@ A personal backlog to add and delete titles (games). Built with .NET REST API + 
 - [ ] Login/register endpoints
 - [ ] Protect routes in Angular with an auth guard
 - [ ] Store token in Angular and send it in request headers
+- [ ] Move CORS to `appsettings.json`
 
 ## V6 — Polish
 - [ ] Add Angular Material or a CSS framework
