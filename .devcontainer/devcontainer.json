@@ -32,7 +32,14 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-dotnettools.csharp",
-				"ms-mssql.mssql"
+				"ms-mssql.mssql",
+				"ms-dotnettools.vscode-dotnet-runtime",
+				"angular.ng-template",
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.vscode-typescript-next",
+				"humao.rest-client"
 			]
 		}
 	},
@@ -47,10 +54,17 @@
 
 	// postCreateCommand.sh parameters: $1=SA password, $2=dacpac path, $3=sql script(s) path
 	"postCreateCommand": "bash .devcontainer/mssql/postCreateCommand.sh 'P@ssw0rd' './bin/Debug/' './.devcontainer/mssql/'",
+ 	// "postCreateCommand": "cd /workspaces/learning_dotnet_angular/backend/MiniBacklog && dotnet restore"
+	
 	"features": {
 		"ghcr.io/devcontainer-config/features/dot-config:4": {},
-		"ghcr.io/postfinance/devcontainer-features/dotnet:1": {}
-	}
+		"ghcr.io/postfinance/devcontainer-features/dotnet:1": {},
+		"ghcr.io/devcontainers/features/node:2.1.0": {
+			"version": "22",
+			"installGlobalPackages": ["@angular/cli@latest"]
+		}
+	},
+	"forwardPorts": [5095, 4200]
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
