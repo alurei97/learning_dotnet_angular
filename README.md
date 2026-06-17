@@ -17,7 +17,9 @@ First, Is there a command to init a .net project with some basic info/scaffold?
 ```
 ---
 
-Backend: in `/backend` -> `dotnet run` -> available in port `5095`
+Backend: in `/backend/MiniBacklog` -> `dotnet run` -> available in port `5095`
+
+Frontend: in `/frontend/mini-backlog` -> `ng serve --host 0.0.0.0` -> available in port `4200`
 
 ---
 ---
@@ -41,11 +43,14 @@ A personal backlog to add and delete titles (games). Built with .NET REST API + 
 - [x] Enable CORS so Angular can talk to it
 
 ## Phase 2 — Angular Setup
-- [ ] Create Angular project inside `/frontend` with `ng new`
-- [ ] Generate `GamesService` using `HttpClient`
-- [ ] Add a `getGames()` method
-- [ ] Add an `addGame()` method
-- [ ] Add a `deleteGame()` method
+- [x] Create Angular project inside `/frontend` with `ng new`
+- [x] Generate `Game` model
+- [x] Generate `GamesService` using `HttpClient`
+- [x] Add a `getGames()` method
+- [x] Add a `getGameById()` method
+- [x] Add a `addGame()` method
+- [x] Add a `updateGame()` method  
+- [x] Add a `deleteGame()` method
 
 ## Phase 3 — Angular Component
 - [ ] Create a component with a list of games (`*ngFor`)
