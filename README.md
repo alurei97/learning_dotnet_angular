@@ -53,14 +53,17 @@ A personal backlog to add and delete titles (games). Built with .NET REST API + 
 - [x] Add a `deleteGame()` method
 
 ## Phase 3 — Angular Component
-- [ ] Create a component with a list of games (`*ngFor`)
-- [ ] Add a text input + button to add a new game
-- [ ] Add a delete button per game
+- [x] Create a component with a list of games (`for`)
+- [x] Add a text input + button to add a new game
+- [x] Add a delete button per game
 
 ## Phase 4 — Wire It Up
-- [ ] Run both projects (two terminals)
-- [ ] Fix any CORS errors
-- [ ] Test full loop: add → appears in list → delete → gone
+- [x] Run both projects (two terminals)
+- [x] Fix any CORS errors
+- [x] Test full loop: add → appears in list → delete → gone
+
+## Phase 5
+- [ ] Add `Game` component and `game/id` route
 
 ---
 

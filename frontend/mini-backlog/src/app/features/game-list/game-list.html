@@ -1,0 +1,35 @@
+<form (ngSubmit)="addGame()" class="game-form">
+  <h3>Add a new game</h3>
+  <input [(ngModel)]="newGame.id" name="id" placeholder="Write the id of the game..." required />
+  <input
+    [(ngModel)]="newGame.title"
+    name="title"
+    placeholder="Write the title of the game..."
+    required
+  />
+  <input
+    [(ngModel)]="newGame.creator"
+    name="creator"
+    placeholder="Write the creator of the game..."
+    required
+  />
+  <input
+    [(ngModel)]="newGame.year"
+    name="year"
+    placeholder="Write the year of the game..."
+    required
+  />
+  <button type="submit">Add Game</button>
+</form>
+
+<ul>
+  @for (game of games; track game.id) {
+    <li>
+      <!-- <a [routerLink]="['/games', game.id]">{{ game.title }}</a> -->
+      <p>
+        {{ game.title }} - {{ game.creator }} - {{ game.year }}
+        <button (click)="deleteGame(game.id)">Delete</button>
+      </p>
+    </li>
+  }
+</ul>
