@@ -17,9 +17,9 @@ First, Is there a command to init a .net project with some basic info/scaffold?
 ```
 ---
 
-Backend: in `/backend/MiniBacklog` -> `dotnet run` -> available in port `5095`
+Backend: in `/backend/MiniBacklog` -> `dotnet run` -> available in port `::5095`
 
-Frontend: in `/frontend/mini-backlog` -> `ng serve --host 0.0.0.0` -> available in port `4200`
+Frontend: in `/frontend/mini-backlog` -> `ng serve --host 0.0.0.0` -> available in port `::4200/games` (home is empty for now)
 
 ---
 ---

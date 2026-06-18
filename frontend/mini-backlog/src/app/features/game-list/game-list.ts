@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { Game } from '../../core/models/game.model';
 import { GamesService } from '../../core/services/games.service';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './game-list.css',
 })
 export class GameList {
+  private readonly cdr = inject(ChangeDetectorRef);
   public readonly gameService = inject(GamesService);
   games: Game[] = [];
   newGame: Partial<Game> = {};
@@ -24,7 +25,13 @@ export class GameList {
   }
 
   private getAllGames(): void {
-    this.gameService.getGames().subscribe((games) => this.games = games);
+    this.gameService.getGames().subscribe({
+      next: (games) => {
+        this.games = games;
+        this.cdr.detectChanges();
+      },
+      error: (err) => alert('Failed to load games: ' + err.message),
+    });
   }
 
   private resetForm(): void {
@@ -33,11 +40,17 @@ export class GameList {
 
   addGame(): void {
     this.gameService.addGame(this.newGame as Game)
-      .subscribe(() => this.load());
+      .subscribe({
+        next: () => this.load(),
+        error: (err) => alert('Failed to add game: ' + err.message),
+      });
   }
 
   deleteGame(id: number): void {
     this.gameService.deleteGame(id)
-      .subscribe(() => this.load());
+      .subscribe({
+        next: () => this.load(),
+        error: (err) => alert('Failed to delete: ' + err.message),
+      });
   }
 }
