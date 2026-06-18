@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Service, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Game } from '../models/game.model';
+import { CreateGameDto, Game } from '../models/game.model';
 
 @Service()
 export class GamesService {
@@ -17,7 +17,7 @@ export class GamesService {
         return this.http.get<Game>(url);
     }
 
-    addGame(game: Game): Observable<Game> {
+    addGame(game: CreateGameDto): Observable<Game> {
         return this.http.post<Game>(this.apiUrl, game);
     }
 

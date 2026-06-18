@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectorRef } from '@angular/core';
-import { Game } from '../../core/models/game.model';
+import { CreateGameDto, Game } from '../../core/models/game.model';
 import { GamesService } from '../../core/services/games.service';
 import { FormsModule } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class GameList {
   private readonly cdr = inject(ChangeDetectorRef);
   public readonly gameService = inject(GamesService);
   games: Game[] = [];
-  newGame: Partial<Game> = {};
+  newGame: CreateGameDto = { title: '', creator: '', year: 0 };
 
   ngOnInit(): void {
     this.load();
@@ -35,11 +35,11 @@ export class GameList {
   }
 
   private resetForm(): void {
-    this.newGame = { id: 0, title: '', creator: '', year: 0 };
+    this.newGame = { title: '', creator: '', year: 0 };
   }
 
   addGame(): void {
-    this.gameService.addGame(this.newGame as Game)
+    this.gameService.addGame(this.newGame)
       .subscribe({
         next: () => this.load(),
         error: (err) => alert('Failed to add game: ' + err.message),
