@@ -33,14 +33,20 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Game> AddGame(Game g)
+    public ActionResult<Game> AddGame(CreateGameDto dto)
     {
-        if (g == null) return BadRequest();
+        if (dto == null) return BadRequest();
 
-        games.Add(g);
-        // return Created();
-        // return Ok(GetGameById(g.Id));
-        return CreatedAtAction(nameof(GetGameById), new { id = g.Id }, g);
+        var game = new Game
+        {
+            Id = games.Count > 0 ? games.Max(x => x.Id) + 1 : 1,
+            Title = dto.Title,
+            Creator = dto.Creator,
+            Year = dto.Year,
+        };
+
+        games.Add(game);
+        return CreatedAtAction(nameof(GetGameById), new { id = game.Id }, game);
     }
 
     [HttpPut("{id:int}")]
