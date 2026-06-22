@@ -1,7 +1,7 @@
-import { Component, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { CreateGameDto, Game } from '../../core/models/game.model';
 import { GamesService } from '../../core/services/games.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-game-list',
@@ -12,8 +12,10 @@ import { FormsModule } from '@angular/forms';
 export class GameList {
   private readonly cdr = inject(ChangeDetectorRef);
   public readonly gameService = inject(GamesService);
+  @ViewChild('gameForm') gameForm!: NgForm;
   games: Game[] = [];
-  newGame: CreateGameDto = { title: '', creator: '', year: 0 };
+  // Form model - year as string so it can be empty initially
+  newGame: { title: string; creator: string; year: string } = { title: '', creator: '', year: '' };
 
   ngOnInit(): void {
     this.load();
@@ -35,11 +37,20 @@ export class GameList {
   }
 
   private resetForm(): void {
-    this.newGame = { title: '', creator: '', year: 0 };
+    this.newGame = { title: '', creator: '', year: '' };
+    // Reset form validation state (touched, dirty, etc.) to hide error messages
+    if (this.gameForm) {
+      this.gameForm.resetForm();
+    }
   }
 
   addGame(): void {
-    this.gameService.addGame(this.newGame)
+    const dto: CreateGameDto = {
+      title: this.newGame.title,
+      creator: this.newGame.creator,
+      year: Number(this.newGame.year)
+    };
+    this.gameService.addGame(dto)
       .subscribe({
         next: () => this.load(),
         error: (err) => alert('Failed to add game: ' + err.message),

@@ -1,24 +1,59 @@
-<form (ngSubmit)="addGame()" class="game-form">
+<form #gameForm="ngForm" (ngSubmit)="addGame()" class="game-form">
   <h3>Add a new game</h3>
-  <input
-    [(ngModel)]="newGame.title"
-    name="title"
-    placeholder="Write the title of the game..."
-    required
-  />
-  <input
-    [(ngModel)]="newGame.creator"
-    name="creator"
-    placeholder="Write the creator of the game..."
-    required
-  />
-  <input
-    [(ngModel)]="newGame.year"
-    name="year"
-    placeholder="Write the year of the game..."
-    required
-  />
-  <button type="submit">Add Game</button>
+
+  <div>
+    <input
+      [(ngModel)]="newGame.title"
+      name="title"
+      #titleCtrl="ngModel"
+      placeholder="Write the title of the game..."
+      required
+    />
+    @if (titleCtrl.invalid && titleCtrl.touched) {
+      <span class="error">Title is required</span>
+    }
+  </div>
+
+  <div>
+    <input
+      [(ngModel)]="newGame.creator"
+      name="creator"
+      #creatorCtrl="ngModel"
+      placeholder="Write the creator of the game..."
+      required
+    />
+    @if (creatorCtrl.invalid && creatorCtrl.touched) {
+      <span class="error">Creator is required</span>
+    }
+  </div>
+
+  <div>
+    <input
+      [(ngModel)]="newGame.year"
+      name="year"
+      #yearCtrl="ngModel"
+      type="number"
+      placeholder="Write the year of the game..."
+      required
+      min="1900"
+      max="2030"
+    />
+    @if (yearCtrl.invalid && yearCtrl.touched) {
+      <span class="error">
+        @if (yearCtrl.errors?.['required']) {
+          Year is required
+        }
+        @if (yearCtrl.errors?.['min']) {
+          Year must be >= 1900
+        }
+        @if (yearCtrl.errors?.['max']) {
+          Year must be <= 2030
+        }
+      </span>
+    }
+  </div>
+
+  <button type="submit" [disabled]="gameForm.invalid">Add Game</button>
 </form>
 
 <ul>

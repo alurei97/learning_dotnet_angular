@@ -2,3 +2,19 @@
   display: block;
   margin-bottom: 0.5rem;
 }
+
+.game-form div {
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
