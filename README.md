@@ -63,7 +63,7 @@ A personal backlog to add and delete titles (games). Built with .NET REST API + 
 - [x] Test full loop: add → appears in list → delete → gone
 
 ## Phase 5
-- [ ] Add `Game` component and `game/id` route
+- [x] Add `Game` component and `game/id` route
 
 ---
 

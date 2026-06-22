@@ -2,10 +2,11 @@ import { Component, inject, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { CreateGameDto, Game } from '../../core/models/game.model';
 import { GamesService } from '../../core/services/games.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-game-list',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './game-list.html',
   styleUrl: './game-list.css',
 })

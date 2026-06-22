@@ -1,6 +1,9 @@
 .game-form input {
   display: block;
   margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 15rem;
+  box-sizing: border-box;
 }
 
 .game-form div {
