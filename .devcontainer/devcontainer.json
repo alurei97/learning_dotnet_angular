@@ -57,7 +57,7 @@
  	// "postCreateCommand": "cd /workspaces/learning_dotnet_angular/backend/MiniBacklog && dotnet restore"
 	
 	"features": {
-		"ghcr.io/devcontainer-config/features/dot-config:4": {},
+		"ghcr.io/devcontainer-config/features/dot-config:5": {},
 		"ghcr.io/postfinance/devcontainer-features/dotnet:1": {},
 		"ghcr.io/devcontainers/features/node:2.1.0": {
 			"version": "22",
